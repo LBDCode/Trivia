@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'BTTF';
+    src: URL('../fonts/BTTF.ttf') format('truetype');
+}
+
 body {
-    background-image: url('Assets/images/tiretracks.jpg');
     background-color: black;
+    background-image: url('../images/1.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
     color: white;
 }
 
@@ -10,13 +17,13 @@ h1 {
     font-size: 30px;
 }
 
-@font-face {
-    font-family: 'BTTF';
-    src: URL('../fonts/BTTF.ttf') format('truetype');
+.quiz {
+    max-width: 850px;
+    padding: 10px;
 }
 
-#logo {
-    max-width: 400px;
+.quiz img {
+    max-width:350px;
 }
 
 .hidden {
@@ -25,4 +32,39 @@ h1 {
 
 .shown {
     visibility: visible;
+}
+
+.response {
+    margin: 5px;
+    padding: 2px 5px;
+    background-color: rgba(255, 72, 0, 0.664);
+    border-radius: 5px;
+    color: white;
+    border-color: white;
+    font-family: 'BTTF';
+}
+
+#newgame {
+    margin: 5px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    border-color: rgba(255, 72, 0, 0.863);
+    background-color: white;
+    font-family: 'BTTF';
+}
+
+#logo {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+#question {
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+#timer{
+    color:rgb(8, 230, 230);
+    font-size: 18px;
+    font-weight: 500;
 }

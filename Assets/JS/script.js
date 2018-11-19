@@ -1,10 +1,10 @@
 
-var questionCount = 0;
+var questionCount;
 var timeInt;
-var timeQues = 15;
-var cor = 0;
-var inc = 0;
-var unans = 0;
+var timeQue;
+var cor;
+var inc;
+var unans;
 
 var questionObj = [
     {
@@ -14,7 +14,7 @@ var questionObj = [
         C: "Tesla",
         D: "Fido",
         correctAns: "B",
-        status: "unanswered",
+        status: "skipped",
         fact: "Doc always names his dogs after famous scientists.  His dog in 1985 was named Einstein, and his dog in 1955 was Copernicus.",
         html: "<img src='Assets/images/einstein.jpg'/>"
     }, 
@@ -25,7 +25,7 @@ var questionObj = [
         C: "Don Pinewood",
         D: "George McFly",
         correctAns: "A",
-        status: "unanswered",
+        status: "skipped",
         fact: "In addition to his role as Douglass Needles in the second and third BttF movies, Michael 'Flea' Balzary has had small parts in a number of films and TV shows, including Baby Driver, The Big Lebowski, and The Wild Thornberrys.",
         html:"<img src='Assets/images/needles.jpg'/>",
     },
@@ -36,7 +36,7 @@ var questionObj = [
         C: "BCK2FUTR",
         D: "OUTATIME",
         correctAns: "D",
-        status: "unanswered",
+        status: "skipped",
         fact: "The DeLorean time machine is actually a licensed, registered vehicle in the state of California. While the vanity license plate used in the film says 'OUTATIME', the DeLorean's real license plate reads 3CZV657.",
         html:"<img src='Assets/images/outatime.jpg'/>"
     },
@@ -47,7 +47,7 @@ var questionObj = [
         C: "66 MPH",
         D: "100 MPH",
         correctAns: "B",
-        status:"unanswered",
+        status:"skipped",
         fact:"The first time we see the DeLorean getting up to speed to time travel (in the parking lot of the Twin Pines Mall) is a great example of 'movie physics'.  In reality, the DMC-12 takes almost 9 seconds to go from 0-60, making it impossible for the car to reach 88 MPH in the time and distance alloted in that scene.",
         html:"<img src='Assets/images/88.jpg'/>"
     },
@@ -58,8 +58,8 @@ var questionObj = [
         C: "Johnny B. Goode",
         D: "Mr Sandman",
         correctAns: "C",
-        status: "unanswered",
-        fact: "While Michael J Fox didn't really play any of the songs in Back to the Future, he did later learn to play the guitar, and has performed Johnny B. Goode publically on several occasions.",
+        status: "skipped",
+        fact: "While Michael J Fox didn't really play any of the songs in Back to the Future, he did later learn to play the guitar, and has performed Johnny B. Goode publically on several occasions at benefit events for Parkinson's research.",
         html: "<img src='Assets/images/johnnybgoode.jpg'/>"
     },
 ];
@@ -70,17 +70,17 @@ var resultsObj = {
     evalAns: function(answer) {
         var quesStr = questionObj[questionCount];
         if ( answer == quesStr.correctAns ) {
-            quesStr.status = "Correct";
+            quesStr.status = "correct";
         } else {
-            quesStr.status = "Incorrect"
+            quesStr.status = "incorrect"
         }
     },
 
     updateScores: function() {
         $.each(questionObj, function(index, value) {
-            if (value.status === "Correct"){
+            if (value.status === "correct"){
                 cor++;
-            } else if (value.status === "Incorrect") {
+            } else if (value.status === "incorrect") {
                 inc++;
             } else {
                 unans++;
@@ -121,7 +121,8 @@ function displayQuestion () {
     $("#2").text("B: " + q.B);
     $("#3").text("C: " + q.C);
     $("#4").text("D: " + q.D);
-
+    $("#quizpic").html("");
+    
 };
 
 //modify html to show answers
@@ -143,11 +144,12 @@ function displayAnswer() {
     $(".ans-buttons").removeClass("shown");
     $(".ans-buttons").addClass("hidden");
 
-    $("#question").text(q.status);
-    $("#1").text("The answer is: " + q[corAns]);
-    $("#2").text("Fun fact: ");
-    $("#3").text(q.fact);
-    $("#4").html(q.html);
+    $("#question").text("That answer was " + q.status + ". The answer is " + q[corAns] + " .");
+    $("#1").text("Fun fact: ");
+    $("#2").text(q.fact);
+    $("#3").text("");
+    $("#4").text("");
+    $("#quizpic").html(q.html);
 
 
 };
@@ -171,11 +173,13 @@ function displayResults() {
     $("#timer").removeClass("shown");
     $("#timer").addClass("hidden");
 
-    $("#question").text("Let's see how you did!");
+    $("#question").text("Let's see how you did:");
     $("#1").text("Correct: " + cor);
     $("#2").text("Incorrect: " + inc);
-    $("#3").text("Unanswered: " + unans);
+    $("#3").text("Skipped: " + unans);
     $("#4").text(message);
+    $("#quizpic").html('<iframe width=400" height="260" src="https://www.youtube.com/embed/IVy8tz54_JA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+
 }
 
 
@@ -192,7 +196,7 @@ function init() {
   
 
     $.each(questionObj, function(index, value) {
-        value.status = "unanswered";
+        value.status = "skipped";
     });
 
     $("#timer").removeClass("hidden");
