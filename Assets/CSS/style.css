@@ -1,0 +1,28 @@
+body {
+    background-image: url('Assets/images/tiretracks.jpg');
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font-family: 'BTTF';
+    color: rgba(255, 72, 0, 0.664);
+    font-size: 30px;
+}
+
+@font-face {
+    font-family: 'BTTF';
+    src: URL('../fonts/BTTF.ttf') format('truetype');
+}
+
+#logo {
+    max-width: 400px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.shown {
+    visibility: visible;
+}
