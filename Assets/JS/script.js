@@ -59,12 +59,10 @@ var questionObj = [
         D: "Mr Sandman",
         correctAns: "C",
         status: "skipped",
-        fact: "While Michael J Fox didn't really play any of the songs in Back to the Future, he did later learn to play the guitar, and has performed Johnny B. Goode publically on several occasions at benefit events for Parkinson's research.",
+        fact: "While Michael J Fox didn't really play any of the songs in Back to the Future, he later learned to play the guitar, and has performed Johnny B. Goode publically at several Pakinson's benefit events.",
         html: "<img src='Assets/images/johnnybgoode.jpg'/>"
     },
 ];
-
-
 
 var resultsObj = {
     evalAns: function(answer) {
@@ -89,7 +87,7 @@ var resultsObj = {
     },
 };
 
-
+//timer functions
 function timer() {
     timeLeft = timeQues;
     $('#timer').text('Time: ' + timeLeft);
@@ -101,13 +99,11 @@ function showTimer() {
     $('#timer').text('Time: ' + timeLeft);
     if(timeLeft < 1){        
         displayAnswer();
-        // clearInterval(timeInt);
     }
-    
 };
 
 
-//modify html to show questions
+//modify html to show questions, reset timer
 function displayQuestion () {
     var q = questionObj[questionCount];
     
@@ -121,11 +117,10 @@ function displayQuestion () {
     $("#2").text("B: " + q.B);
     $("#3").text("C: " + q.C);
     $("#4").text("D: " + q.D);
-    $("#quizpic").html("");
-    
+    $("#quizpic").html("");    
 };
 
-//modify html to show answers
+//modify html to show answers, reset timer
 function displayAnswer() {
     var q = questionObj[questionCount];
     var corAns = questionObj[questionCount].correctAns;
@@ -138,8 +133,7 @@ function displayAnswer() {
 	}	
 
     clearInterval(timeInt);
-    timer()
-    
+    timer()    
 
     $(".ans-buttons").removeClass("shown");
     $(".ans-buttons").addClass("hidden");
@@ -150,14 +144,13 @@ function displayAnswer() {
     $("#3").text("");
     $("#4").text("");
     $("#quizpic").html(q.html);
-
-
 };
 
-//modify html to show final quiz results
+//modify html to show final quiz results, stop timer, calc results
 function displayResults() {
     clearInterval(timeInt);
     resultsObj.updateScores();
+
     var message;
 
     if (cor >= 4) {
@@ -179,21 +172,17 @@ function displayResults() {
     $("#3").text("Skipped: " + unans);
     $("#4").text(message);
     $("#quizpic").html('<iframe width=400" height="260" src="https://www.youtube.com/embed/IVy8tz54_JA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-
-}
-
+};
 
 //reset variables, ques status, timer interval, and html
 function init() {
-    
-
     cor = 0;
     inc = 0;
     unans = 0;
     questionCount = 0;
     timeQues = 15;
-    clearInterval(timeInt);
-  
+
+    clearInterval(timeInt);  
 
     $.each(questionObj, function(index, value) {
         value.status = "skipped";
@@ -201,13 +190,11 @@ function init() {
 
     $("#timer").removeClass("hidden");
     $("#timer").addClass("shown");
-
     
     displayQuestion();
-
 };
 
-
+//button event handlers
 $("#newgame").click(init);
 
 $(".response").click(function() {

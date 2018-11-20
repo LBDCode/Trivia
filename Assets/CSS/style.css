@@ -8,13 +8,16 @@ body {
     background-image: url('../images/1.png');
     background-repeat: no-repeat;
     background-size: cover; 
+    font-family: 'Libre Franklin', sans-serif;
     color: white;
+    line-height: 150%;
 }
 
 h1 {
     font-family: 'BTTF';
     color: rgba(255, 72, 0, 0.664);
     font-size: 30px;
+    margin-bottom: 15px;
 }
 
 .quiz {
@@ -24,6 +27,7 @@ h1 {
 
 .quiz img {
     max-width:350px;
+    margin-top: 15px;
 }
 
 .hidden {
@@ -59,12 +63,12 @@ h1 {
 }
 
 #question {
-    font-weight: 700;
-    margin: 5px 0;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px 0;
 }
 
 #timer{
     color:rgb(8, 230, 230);
     font-size: 18px;
-    font-weight: 500;
 }
