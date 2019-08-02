@@ -72,3 +72,31 @@ h1 {
     color:rgb(8, 230, 230);
     font-size: 18px;
 }
+
+@media only screen and (max-width: 900px) {
+
+    .quiz{
+        max-width: 95%;
+    }
+
+    .quiz img {
+        max-width:280px;
+    }
+    
+}
+
+@media only screen and (max-width: 400px) {
+
+    #logo {
+        max-width: 280px;
+        margin-bottom: 20px;
+    }
+
+    .quiz img {
+        max-width:220px;
+    }
+
+    .quiz {
+        max-width: 90%;
+    }
+}
