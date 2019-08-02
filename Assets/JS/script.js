@@ -171,7 +171,7 @@ function displayResults() {
     $("#2").text("Incorrect: " + inc);
     $("#3").text("Skipped: " + unans);
     $("#4").text(message);
-    $("#quizpic").html('<iframe width=400" height="260" src="https://www.youtube.com/embed/IVy8tz54_JA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+    $("#quizpic").html('<iframe width=300" height="260" src="https://www.youtube.com/embed/IVy8tz54_JA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 };
 
 //reset variables, ques status, timer interval, and html
