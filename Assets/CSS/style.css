@@ -91,6 +91,11 @@ h1 {
         font-size: 20px;
     }
 
+    .container {
+
+        margin-left:10px;
+    }
+
     #question {
         font-weight: 600;
         font-size: 14px;
@@ -110,8 +115,4 @@ h1 {
         max-width:220px;
     }
 
-    .quiz {
-        max-width: 100%;
-        padding: 5px;
-    }
 }
